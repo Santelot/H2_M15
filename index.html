@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M15</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a explorar cómo añadir comentarios en nuestras apps para hacerlas más interactivas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo están hoy. Si se sienten listos, toquen su codo derecho con la mano izquierda. Si sienten que necesitan un impulso, hagan un salto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y mejorar nuestras habilidades. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos importantes: 1. Explorar el uso de comentarios en aplicaciones. 2. Configurar y personalizar una sección de comentarios en Glide. 3. Analizar cómo los comentarios mejoran la interacción del usuario."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Presentación de una innovación que sirve como ejemplo de interacción en apps.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy les presento Disqus, una plataforma que permite añadir comentarios a apps y sitios web. Veremos cómo esto mejora la interacción y retroalimentación."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Ejemplo de Disqus".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Disqus permite a los usuarios dejar comentarios, opiniones y preguntas. Vamos a ver un ejemplo en pantalla para entender su impacto en la experiencia del usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Disqus".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué opinan, Genios? Añadir una sección de comentarios puede convertir una app en un espacio de conversación y mejora continua. ¿Qué beneficios ven en esta funcionalidad?"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 22 minutos</div>
+        <div class="subtitle">Implementación de comentarios en Glide y gestión avanzada de datos.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a aprender a implementar una nueva función para nuestra aplicación dentro de Glide. Ésta función es muy útil cuando estamos desarrollando aplicaciones en las que varias personas van a interactuar y colaborar. Tal como lo es el caso de nuestra aplicación de seguimiento de tareas. Ésta nueva función emplea varias herramientas dentro de Glide así que revisaremos una por una para poder implementar ésta función. Así que pongan atención porque dentro de lo que voy a explicar hay un Easter Egg. Al final de la clase voy a lanzar una pregunta y quien la responda, ganará mon-e."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Paso 1".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de continuar con el desarrollo de nuestra nueva función, quiero hacer un paréntesis importante. ¿Alguien sabe por qué estamos haciendo una aplicación para seguimiento de tareas? ... La razón es simple, una aplicación de seguimiento de tareas es una herramienta que les puede ser útil en cualquier ámbito laboral en el que se desempeñen. Pero más allá de eso, una app de seguimiento de tareas utiliza la gran mayoría de elementos y funciones que tiene Glide. Por lo que nuestro objetivo NO es hacer una aplicación de seguimiento de tareas. No estamos aprendiendo a hacer aplicaciones de seguimiento de tareas, sino que estamos aprendiendo a utilizar todas las funcionalidades de aplicaciones en Glide a través de la creación de una aplicación de seguimiento de tareas. Tengan ésto en mente cada que sigamos construyendo sobre nuestra app, ya que la app no es el objetivo, es el medio y el vehículo para aprender a usar funciones dentro de Glide. Sin más por añadir, vamos de lleno con Glide."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Paso 2".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a aprender a crear la funcionalidad de comentarios dentro de nuestra aplicación en Glide. Antes de implementarla, hay un par de cosas que tenemos que revisar dentro de nuestra base de datos para garantizar que todo vaya a funcionar correctamente. Ustedes han estado trabajando libremente en su aplicación, utilizando los datos que han diseñado y elegido. Para poder implementar la funcionalidad de comentarios, necesitamos un tipo de dato nuevo, así que lo vamos a añadir dentro de nuestra tabla donde estamos almacenando la información de las tareas. No se preocupen por los datos que tienen, no vamos a quitar nada de lo que ustedes eligieron para trabajar, sólo añadiremos un dato nuevo. Vamos a añadir una columna llamada Row ID."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1.5 minutos):</strong> Proyectar Diapositiva 12 "Paso 3".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La columna Row ID es una columna que es esencial para todo aquello que requieran seguir o rastrear puntualmente. ¿A qué me refiero con seguir? Hoy vamos añadir comentarios para nuestras tareas, y para ello estaremos creando una tabla con la información de los comentarios. ¿Qué pasaría si todos los comentarios de todos los posts, de todas las cuentas, se vieran al mismo tiempo en Instagram? No puedo empezar a imaginar el caos, pero a pesar de que tener todos los comentarios en un sólo lugar suena loco e impráctico al inicio... Si lo pensamos un poco más nos daremos cuenta que es la única manera. Tener un espacio de almacenamiento, es decir, una tabla en Glide por ejemplo, para todos y cada uno de los posts y usuarios, sería probablemente aún más caótico que el escenario que planteamos previamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Paso 4".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Todos los comentarios en Instagram están almacenados en un sólo lugar, al igual que estarán los nuestros. La manera en la que nosotros podemos identificar qué comentario le pertenece a cada una de las tareas es asignándole un ID a las mismas. Un ID es un identificador, es decir, un número, o alguna serie de caracteres que te permite diferenciar un elemento de otros. Un ejemplo de un tipo de identificador es el CURP, un código alfanumérico de 18 caracteres, lo que quiere decir que está compuesto por letras y números; el cual sirve para identificar oficialmente a cada persona que vive en México."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Paso 5".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para asignar un ID a nuestras tareas utilizaremos el ID de la fila que Glide tiene ya incorporado. Cada fila que ustedes crean en Glide tiene un identificador único por default, ustedes pueden usar esta característica cuando sea necesario y en este momento nos será bastante útil. Para poder ver y usar el ID de la fila, crearemos una nueva columna básica del tipo 'Row ID'. Ya que tenemos un identificador único para cada tarea, ahora podremos asignarle comentarios a cada una sin tener una cantidad confusa de datos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "Paso 6".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora sí, vamos a crear nuestra tabla de comentarios. Para funcionar correctamente, el sistema de comentarios necesita una estructura particular; no es completamente rígida esta estructura, lo que quiere decir que no necesita tener exactamente estos datos, pero sí es una buena manera de estandarizar la información básica que necesitan. Nuestros comentarios requieren de las columnas: mensaje (que es el comentario en sí), ID de la tarea (que será la tarea a la cual pertenezca un dado comentario), email (que nos ayudará a validar el envío de mensajes), una columna de relación para confirmar que el correo del comentario sea el mismo que el del usuario que comenta y, por último, un TimeStamp. ¿Qué es un TimeStamp? En inglés, 'timestamp' se llama así porque 'stamp' significa 'sello'. Antiguamente, los documentos se sellaban con la fecha y hora para registrar el momento exacto de algún evento. Hoy en día, el término sigue en el mundo digital, donde una 'timestamp' marca de forma virtual cuándo ocurrió algo, como si fuera un sello en el tiempo. Para nuestra app, un TimeStamp es un registro del momento en el que se creó el comentario, esta información es útil para muchos escenarios, pero simplemente recuerden que es algo recomendable de tener en casi cualquier dato que sea creado por un usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Paso 7".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Gracias a nuestra recién creada tabla de comentarios, podemos comenzar a montar la función en Glide. Vamos a ir a nuestra pantalla de tareas y seleccionar una tarea. Esto nos debe llevar a la pantalla específica de la tarea, la cual, en caso de que no hayan implementado algo, no posee nada. La pantalla la pueden personalizar a su gusto y añadir lo que consideren vale la pena ver ahí. Pero ahorita nos vamos a concentrar en la parte de los comentarios, por lo que vamos a insertar un elemento de comentario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Paso 8".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro del elemento de comentario, vamos a empezar a mapear nuestra información para que funcione correctamente. Primero tomaremos como fuente de datos para el elemento nuestra nueva tabla de comentarios. Si se dan cuenta, Glide ya está intentando acomodar algunos de los datos, pero aún así revisaremos uno por uno para ver que todo esté donde debería. En el último rubro del apartado de Data, veremos 'Save Text', revisen que la columna mensaje sea a donde se va a guardar el texto que escribamos como comentario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Paso 9".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Posteriormente en el apartado de 'Style' pueden elegir cómo quieren que se vea su sección de comentarios. Considero que la forma más intuitiva de verlos es en el formato de Chat, pero es completamente decisión de ustedes cómo prefieran que se vea su app."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1.5 minutos):</strong> Proyectar Diapositiva 19 "Paso 10".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora viene la información que vamos a mostrar. La información a mostrar es aquello que se verá del mensaje y dónde se verá dentro del Layout de comentarios en Glide. Para la parte de 'Text', revisen que esté colocado nuestro mensaje. En TimeStamp deberá estar nuestra columna con el mismo nombre. Para las siguientes columnas es donde comenzaremos a usar nuestras relaciones y datos avanzados, pero dejaremos esa parte al final, así que por ahora las dejaremos como están. Y en el caso del correo, sólo es necesario mostrar el correo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1.5 minutos):</strong> Proyectar Diapositiva 20 "Paso 11".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Sigue la segunda parte más importante, configurar nuestra escritura, es decir: elegir a dónde y cómo enviar la información que se genera cada vez que se crea un nuevo comentario. Como verán estamos registrando 3 valores importantes, el ID de la tarea, el correo y el TimeStamp. El ID de la tarea lo seleccionaremos de nuestra tarea actual. Al hacer clic en el dropdown para seleccionar aquello que queremos escribir en ID, veremos que nos aparece la opción de Row ID que creamos para la tarea. Esto sucede ya que estamos trabajando directamente dentro de una tarea y Glide nos ofrece todas las opciones de información que existe sobre la misma. De manera similar vamos a registrar en correo, el correo de la persona que está escribiendo el comentario, y ese correo es el que está usando el usuario en turno. Finalmente registraremos el TimeStamp, utilizando una función que Glide nos ofrece hasta arriba que dice 'Current Date/Time'."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Paso 12".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Pueden personalizar más cosas como el mensaje que se mostrará cuando aún no haya comentarios, pero por ahora probaremos que nuestros datos y configuraciones funcionen. Curiosamente la forma más efectiva de hacer esto, no es creando un comentario en el editor de Datos, sino en el de Layout. La forma más efectiva de probar si funcionan los comentarios, es comentar. Así que vamos a añadir un comentario para ver en acción nuestra función. ¡Todo parece funcionar perfectamente! Aunque aún hay un par de cosas por hacer."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (1.5 minutos):</strong> Proyectar Diapositiva 22 "Paso 13".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Lo primero que necesitamos hacer es crear un filtro de información. Para ello vamos a ver cómo funciona nuestra tabla de mensajes. Vamos a regresarnos a la pantalla de tareas, seleccionar una diferente a aquella donde comentamos, y vamos a crear un nuevo comentario. Como podrán notar incluso antes de tener la oportunidad de ingresar su comentario, podemos ver los comentarios de la otra tarea. ¿Por qué sucede esto si estamos registrando el ID de la fila? Pues sucede debido a que no estamos usando en ninguna parte ese registro del ID, así que vamos a cambiar eso."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (1 minuto):</strong> Proyectar Diapositiva 23 "Paso 14".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro del menú de opciones tenemos la opción de Filtro de Datos. Crearemos un filtro en el que Glide compare si el ID del comentario, corresponde al de la tarea en la que estamos en este momento. Con esto, estamos aplicando la función de Row ID y ahora los únicos comentarios que mostrará son aquellos que sí corresponden a la tarea en la que estamos comentando."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (1.5 minutos):</strong> Proyectar Diapositiva 24 "Paso 15".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente vamos a añadir un poco de estilo a nuestros comentarios, vamos a mostrar la imagen de perfil y el apodo del usuario que hizo cada comentario. Este pequeño ajuste hará que nuestro panel de comentarios se vea muy limpio e intuitivo, inclusive les recordará secciones de comentarios de lugares como Facebook e Instagram. Para ello, vamos a crear dentro de nuestra tabla de datos de comentarios, dos nuevas columnas de búsqueda. Una buscará la imagen del usuario ligado a nuestra columna de relación, mientras que la otra buscará el apodo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (1.5 minutos):</strong> Proyectar Diapositiva 25 "Paso 16".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para terminar de configurar esta característica, vamos a configurarlos dentro de la información que estamos mostrando. Con esto habremos terminado de crear exitosamente una sección de comentarios para nuestra aplicación. Es una función muy versátil que les permite empezar a interactuar con datos de manera distinta, es tan versátil que con esto ustedes ya podrían empezar a experimentar con funciones como chats dentro de sus aplicaciones en Glide. Recuerden que estamos aprendiendo a utilizar muchas herramientas de Glide y a desarrollar algunas otras, pero el límite lo ponen ustedes. Con un poco de ingenio y práctica podrían pasar de tener una simple aplicación de seguimiento de tareas para su empresa o proyecto, a tener una pequeña y completa red social interna de su negocio que les permita llevar al siguiente nivel la administración y gestión del mismo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (1 minuto):</strong> Proyectar Diapositiva 26 "Objetivo Avanzado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos avanzado el primer objetivo de la misión: explorar el uso de comentarios en aplicaciones. Estamos listos para los próximos pasos en Glide."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🔄 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio para mejorar la percepción auditiva y concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Cierre de Ojos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora vamos a hacer un ejercicio para agudizar nuestra percepción. Van a cerrar los ojos y a escuchar los sonidos a su alrededor."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 28 "Tiempo de Escucha".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Reflexión sobre la Escucha".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Esta actividad nos ayuda a ser más conscientes del entorno y a mejorar nuestra percepción auditiva, algo que también es importante al trabajar en equipo y en proyectos tecnológicos."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos y recolección de dispositivos para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, formen los equipos con los que han estado desarrollando su app. Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 31 "Tiempo para Formar Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, envíen a un representante de su equipo para recoger las Magic Tablets. Tienen otro minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 33 "Tiempo para Recoger Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 12.5 minutos</div>
+        <div class="subtitle">Aplicación de lo aprendido mediante el diseño de una nueva funcionalidad.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es hora del Challenge, Genios. Vamos a aplicar todo lo que hemos aprendido hasta ahora y mejorar nuestra app con una funcionalidad nueva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 35 "Detalles del Reto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este reto, cada equipo diseñará la pantalla de cada tarea en su app, enfocándose en cómo los usuarios podrán interactuar con la funcionalidad de comentarios que acabamos de aprender. Además, deben revisar y diseñar el pop up para editar la tarea, de manera que todo esté accesible y organizado en una sola vista. Al añadir los comentarios, piensen en cómo facilitar que los usuarios dejen su feedback y revisen las interacciones previas. Esta funcionalidad hará que sus apps no solo sean más prácticas, sino que también promuevan la colaboración y la comunicación entre los usuarios. ¿Listos? ¡Apliquemos lo aprendido y demos vida a nuestras ideas!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 36 "Tiempo para el Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Captura de Trabajo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, tomen una foto de la pantalla que acaban de diseñar, la usaremos en la siguiente clase. Esto les ayudará a dar seguimiento a su proyecto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Objetivos Completados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy logramos todos los objetivos de la misión: exploramos el uso de comentarios, configuramos una sección de comentarios y analizamos su impacto en la app. ¡Excelente!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 39 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Gran trabajo, Genios. Su dedicación y creatividad hoy merecen un reconocimiento especial. ¡You've Got Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad para comprobar la atención de los genios y otorgar Mon-e.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden la dinámica: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 41 "Pregunta: ¿Por qué se le llama TimeStamp?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, dos, tres. Levanten la mano si saben la respuesta. ¡Muy bien! Vamos a escuchar lo que tienen que decir."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 42 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído. Ahora tú, dos. Y por último, el tres. La respuesta correcta es que 'timestamp' se llama así porque 'stamp' significa 'sello' y antiguamente, los documentos se sellaban con la fecha y hora para registrar el momento exacto de algún evento, lo cual fue heredado al mundo digital. ¡Muy bien, a los ganadores les toca Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 1 minutos</div>
+        <div class="subtitle">Cierre de la misión y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 43 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de cerrar la misión de hoy y honrar el espacio en el que trabajamos. Les pido que cada equipo pase al frente y devuelva sus Magic Tablets. Vamos a asegurarnos de dejar todo en orden, listos para la siguiente clase."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
